@@ -1,0 +1,13 @@
+<form (ngSubmit)="onSubmit()" #registrationForm="ngForm">
+  <label for="username">Username</label>
+  <input type="text" class="form-control" id="username" required
+         [(ngModel)]="model.username" name="username" #username="ngModel">
+
+  <label for="email">Email</label>
+  <input type="text" class="form-control" id="email" required
+         [(ngModel)]="model.email" name="email" #email="ngModel">
+  <label for="passwordHash">Password</label>
+  <input type="password" class="form-control" id="passwordHash" required
+         [(ngModel)]="model.passwordHash" name="passwordHash" #passwordHash="ngModel">
+  <button type="submit" class="btn btn-success" [disabled]="!registrationForm.form.valid">Submit</button>
+</form>

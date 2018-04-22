@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Restangular} from 'ngx-restangular';
 import {LoginModel, LoginValidationModel, RegistrationModel} from '../model/account';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class AccountService {
 
-  constructor(private restAngular: Restangular) {
+  constructor(private restAngular: Restangular, private router: Router) {
   }
 
   getAll() {
@@ -24,10 +25,11 @@ export class AccountService {
     this.restAngular.all('login').post(loginModel).subscribe(res => {
       const mod = res as LoginValidationModel;
       if (mod.valid === 1) {
-        console.log(mod);
       localStorage.setItem('login', mod.Token);
       localStorage.setItem('username', mod.username);
-      return true;
+        this.router.navigate(['/home']);
+
+        return true;
       }
       return false;
 }); }
@@ -35,5 +37,6 @@ export class AccountService {
   logout() {
     localStorage.removeItem('login');
     localStorage.removeItem('username');
+    this.router.navigate(['']);
   }
 }

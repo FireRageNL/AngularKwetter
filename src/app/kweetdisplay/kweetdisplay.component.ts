@@ -14,7 +14,7 @@ export class KweetdisplayComponent implements OnInit {
   constructor(private kweetService: KweetService) {}
 
   ngOnInit() {
-    this.kweetService.getKweetsFromUser('TestAccount1').subscribe(kweets => {this.kweets = kweets; })
+    this.kweetService.getKweetsFromUser(localStorage.getItem('username')).subscribe(kweets => {this.kweets = kweets; });
   }
 
 }

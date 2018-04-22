@@ -1,4 +1,4 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div>This gonna be a nav-bar later on    <div *ngIf="navbar != undefined"> Hello {{navbar.username}}<button (click)="logoutClick()">logout</button></div></div>
+<div *ngIf="navbar != undefined"> Hello {{navbar.username}}<button (click)="logoutClick()">logout</button></div>
 <router-outlet></router-outlet>
 

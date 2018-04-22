@@ -12,6 +12,7 @@ import {FormsModule} from '@angular/forms';
 import { KweetdisplayComponent } from './kweetdisplay/kweetdisplay.component';
 import {KweetService} from './services/kweet.service';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './services/Guard.service';
 
 
 export function RestangularConfigFactory(RestangularProvider) {
@@ -20,8 +21,8 @@ export function RestangularConfigFactory(RestangularProvider) {
 const appRoutes: Routes = [
   {path: 'register', component: RegistrationComponent},
   {path: '', component: LoginComponent},
-  {path: 'home', component: UserComponent},
-  {path: 'displaykweets', component: KweetdisplayComponent}
+  {path: 'home', component: UserComponent, canActivate: [AuthGuard]},
+  {path: 'displaykweets', component: KweetdisplayComponent, canActivate: [AuthGuard]}
 ]
 
 @NgModule({
@@ -39,7 +40,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AccountService, KweetService],
+  providers: [AccountService, KweetService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

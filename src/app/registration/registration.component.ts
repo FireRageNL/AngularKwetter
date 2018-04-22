@@ -13,7 +13,8 @@ export class RegistrationComponent implements OnInit {
 
   model = new RegistrationModel(null,null,null);
 
-  onSubmit() {this.accountService.registerUser(this.model); }
+  onSubmit() {this.accountService.registerUser(this.model);
+  this.model = new RegistrationModel(null,null,null); }
 
   ngOnInit() {
   }

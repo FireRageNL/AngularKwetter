@@ -19,3 +19,20 @@ export class RegistrationModel {
 
   }
 }
+
+export class LoginModel {
+
+  constructor(public username: string,
+              public password: string) {
+
+  }
+}
+
+export class LoginValidationModel {
+
+  constructor(public valid: number,
+              public Token: string,
+              public username: string) {
+
+  }
+}

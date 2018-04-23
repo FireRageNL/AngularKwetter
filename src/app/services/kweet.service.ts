@@ -9,6 +9,6 @@ export class KweetService {
   }
 
   getKweetsFromUser(username: string) {
-    return this.restAngular.one('kweet', username).get();
+    return this.restAngular.one('kweet', username).get({},{Authorization: 'Bearer'  + localStorage.getItem('login')});
   }
 }

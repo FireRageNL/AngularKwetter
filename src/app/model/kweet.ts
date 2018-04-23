@@ -6,3 +6,9 @@ export class Kweet {
               public messageContents: string) {
   }
 }
+
+export class KweetModel {
+  constructor(public username: string,
+              public kweetContents: string) {
+  }
+}

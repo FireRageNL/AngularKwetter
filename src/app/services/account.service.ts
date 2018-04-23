@@ -10,7 +10,7 @@ export class AccountService {
   }
 
   getAll() {
-    return this.restAngular.all('account/getall').getList({Authorization: 'Bearer'  + localStorage.getItem('login')});
+    return this.restAngular.all('account/getall').getList('', {Authorization: 'Bearer'  + localStorage.getItem('login')});
   }
 
   getById(id: number) {

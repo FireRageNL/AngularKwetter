@@ -13,10 +13,13 @@ export class AppComponent implements OnInit {
 
   navbar: NavbarLoginModel;
 
+  timeout: any;
+
 
   logoutClick() {
     this.accountService.logout();
     console.log('we be logged out');
+    this.refresh();
   }
   constructor(private accountService: AccountService, private route: Router) {
     this.setNavbar();
@@ -24,10 +27,16 @@ export class AppComponent implements OnInit {
 
   setNavbar() {
     if (localStorage.getItem('username') != null) {
-      this.navbar = new NavbarLoginModel(localStorage.getItem('username')); }
+      this.navbar = new NavbarLoginModel(localStorage.getItem('username')); } else {
+      this.navbar = undefined;
+    }
   }
   ngOnInit(): void {
     this.route.events.subscribe(test => this.setNavbar());
   }
 
+  refresh() {
+    this.timeout = setTimeout(() => {
+      this.setNavbar(); }, 100);
+  }
 }

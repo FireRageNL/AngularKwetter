@@ -17,6 +17,10 @@ export class AccountService {
     return this.restAngular.one('account', id).get();
   }
 
+  getByUsername(username: string) {
+    return this.restAngular.one('account/search' , username).get({}, {Authorization: 'Bearer'  + localStorage.getItem('login')});
+  }
+
   registerUser(userModel: RegistrationModel) {
     return this.restAngular.all('account/createUser').post(userModel);
   }

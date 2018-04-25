@@ -1,21 +1,9 @@
-<a [routerLink] = "['/displaykweets']">Kweets?</a> <br/> <br/>
- <br/> <br/>
-
 <div class="container">
-<h2>List of accounts</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th>Email</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let account of accounts">
-    <td>{{account.username}}</td>
-    <td>{{account.email}}</td>
-  </tr>
-  </tbody>
-</table>
+<h2>Profile</h2>
+
+  <div class="description">
+    <h4 class="card-title"><b>{{account.username}}</b></h4>
+    <h5 class="text-muted">{{account.email}}</h5>
+    <p class="card-text">{{account.biography}}</p>
+  </div>
 </div>

@@ -1,12 +1,14 @@
 <div class="container">
-  <div *ngFor="let kweet of kweets">
-    <h3>{{kweet.owner.username}}</h3>
-    <div class="messageContents">
-      {{kweet.messageContents}}
+  <div class="kweets">
+    <div *ngFor="let kweet of kweets">
+      <div class="messageContents">
+      <h3>{{kweet.owner.username}}</h3>
+        {{kweet.messageContents}}
+      </div>
     </div>
   </div>
 
-  <div class="kweet">
+  <div *ngIf="profileView" class="postKWeet">
     <div class="list-group-item">
       <div class="message-input">
         <input [(ngModel)]="text" class="form-control" type="text" placeholder="Enter that what you want to kweet!"

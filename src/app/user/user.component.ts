@@ -10,19 +10,11 @@ import {AccountService} from '../services/account.service';
 })
 export class UserComponent implements OnInit {
 
-  accounts: Account[];
-
-  interval: any;
+  account: Account = new Account(null, null, null, null, null, null);
 
   constructor(private accountService: AccountService) {}
 
   ngOnInit() {
-    this.accountService.getAll().subscribe(accounts => {this.accounts = accounts; });
-    this.refresh();
-  }
-
-  refresh() {
-  this.interval = setInterval(() => {
-    this.accountService.getAll().subscribe(accounts => {this.accounts = accounts; }); }, 3000);
+    this.accountService.getByUsername(localStorage.getItem('username')).subscribe(account => {this.account = account; });
   }
 }

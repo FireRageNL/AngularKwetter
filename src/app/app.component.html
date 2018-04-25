@@ -1,4 +1,3 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div *ngIf="navbar != undefined"> Hello {{navbar.username}}<button (click)="logoutClick()">logout</button></div>
+<div class="navbar" *ngIf="navbar != undefined"> Hello {{navbar.username}}<button (click)="logoutClick()">logout</button> <a [routerLink] = "['/profile']">My Profile</a> <a [routerLink] = "['/home']"> Timeline</a></div>
 <router-outlet></router-outlet>
-

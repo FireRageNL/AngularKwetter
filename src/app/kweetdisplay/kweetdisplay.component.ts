@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Kweet, KweetModel} from '../model/kweet';
 import {KweetService} from '../services/kweet.service';
 
@@ -9,6 +9,7 @@ import {KweetService} from '../services/kweet.service';
 })
 export class KweetdisplayComponent implements OnInit {
 
+  @Input() profileView = true;
   kweets: Kweet[];
   text = '';
   private kweet: KweetModel;
@@ -17,7 +18,7 @@ export class KweetdisplayComponent implements OnInit {
   constructor(private kweetService: KweetService) {}
 
   ngOnInit() {
-    this.kweetService.getKweetsFromUser(localStorage.getItem('username')).subscribe(kweets => {this.kweets = kweets; });
+  this.refresh();
   }
 
   sendKweet() {
@@ -29,7 +30,11 @@ export class KweetdisplayComponent implements OnInit {
 
   refresh() {
     this.timeout = setTimeout(() => {
-      this.kweetService.getKweetsFromUser(localStorage.getItem('username')).subscribe(kweets => {this.kweets = kweets; }); }, 1000);
+      if (this.profileView) {
+        this.kweetService.getKweetsFromUser(localStorage.getItem('username')).subscribe(kweets => {this.kweets = kweets; });
+      } else {
+        this.kweetService.getAllKweets().subscribe(kweets => {this.kweets = kweets; });
+      }}, 100);
   }
 
 }

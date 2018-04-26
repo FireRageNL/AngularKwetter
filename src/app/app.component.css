@@ -6,11 +6,16 @@
   font-size:24px;
   line-height:24px;
   background-color:#F2F6F9;
+  height:30px;
 }
 
+a{
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: none;
+}
 .btn{
-  font-size:24px;
-  line-height:24px;
 }
 
 #leftPane{
@@ -20,9 +25,14 @@
 #profile{
   text-align: end;
   width:50%;
+  vertical-align: center;
 }
 
 .material-icons{
   display: inline-flex;
   vertical-align: top;
+}
+
+.profileLink{
+  margin-top: 10px;
 }

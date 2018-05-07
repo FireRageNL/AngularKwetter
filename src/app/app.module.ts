@@ -14,6 +14,7 @@ import {KweetService} from './services/kweet.service';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './services/Guard.service';
 import { TimelineComponent } from './timeline/timeline.component';
+import { AllkweetsComponent } from './allkweets/allkweets.component';
 
 
 export function RestangularConfigFactory(RestangularProvider) {
@@ -23,7 +24,8 @@ const appRoutes: Routes = [
   {path: 'register', component: RegistrationComponent},
   {path: '', component: LoginComponent},
   {path: 'home', component: TimelineComponent, canActivate: [AuthGuard]},
-  {path: 'profile', component: UserprofileComponent, canActivate: [AuthGuard]}
+  {path: 'profile', component: UserprofileComponent, canActivate: [AuthGuard]},
+  {path: 'allkweets', component: AllkweetsComponent, canActivate: [AuthGuard] }
 ]
 
 @NgModule({
@@ -34,7 +36,8 @@ const appRoutes: Routes = [
     RegistrationComponent,
     KweetdisplayComponent,
     LoginComponent,
-    TimelineComponent
+    TimelineComponent,
+    AllkweetsComponent
   ],
   imports: [
     BrowserModule,

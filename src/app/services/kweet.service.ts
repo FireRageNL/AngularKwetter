@@ -17,6 +17,10 @@ export class KweetService {
     return this.restAngular.one('timeline').get({}, {Authorization: 'Bearer'  + localStorage.getItem('login')});
   }
 
+  getKweetsFromFollowers(username: string) {
+    return this.restAngular.one('timeline', username).get({}, {Authorization: 'Bearer' + localStorage.getItem('login')});
+  }
+
   postKweet(model: KweetModel) {
     return this.restAngular.all('kweet').post(model, {}, {Authorization: 'Bearer'  + localStorage.getItem('login')});
   }

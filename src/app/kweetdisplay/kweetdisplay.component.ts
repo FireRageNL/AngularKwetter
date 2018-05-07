@@ -10,6 +10,7 @@ import {KweetService} from '../services/kweet.service';
 export class KweetdisplayComponent implements OnInit {
 
   @Input() profileView = true;
+  @Input() followerView = false;
   kweets: Kweet[];
   text = '';
   private kweet: KweetModel;
@@ -32,6 +33,8 @@ export class KweetdisplayComponent implements OnInit {
     this.timeout = setTimeout(() => {
       if (this.profileView) {
         this.kweetService.getKweetsFromUser(localStorage.getItem('username')).subscribe(kweets => {this.kweets = kweets; });
+      } else if (this.followerView) {
+        this.kweetService.getKweetsFromFollowers(localStorage.getItem('username')).subscribe(kweets => {this.kweets = kweets; });
       } else {
         this.kweetService.getAllKweets().subscribe(kweets => {this.kweets = kweets; });
       }}, 100);

@@ -39,8 +39,10 @@ export class AccountService {
 }); }
 
   logout() {
-    localStorage.removeItem('login');
-    localStorage.removeItem('username');
-    this.router.navigate(['']);
+    this.restAngular.all('logout/' + localStorage.getItem('username')).post(localStorage.getItem('username')).subscribe(res => {
+      localStorage.removeItem('login');
+      localStorage.removeItem('username');
+      this.router.navigate(['']);
+    });
   }
 }

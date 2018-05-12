@@ -3,8 +3,11 @@
     <div *ngFor="let kweet of kweets">
       <div class="messageContents">
         <div *ngIf="followers != undefined">
-          <button *ngIf="!findUser(kweet.owner.username)" (click) ="followUser(kweet.owner.username)">Follow</button>
-          <button *ngIf="findUser(kweet.owner.username)" (click)="unfollowUser(kweet.owner.username)">Unfollow</button>
+          <div *ngIf="kweet.owner.username != username">
+            <button *ngIf="!findUser(kweet.owner.username)" (click) ="followUser(kweet.owner.username)">Follow</button>
+            <button *ngIf="findUser(kweet.owner.username)" (click)="unfollowUser(kweet.owner.username)">Unfollow</button>
+            <button (click)="likeKweet(kweet.id)">Like</button>
+          </div>
         </div>
       <h3>{{kweet.owner.username}}</h3>
         {{kweet.messageContents}}

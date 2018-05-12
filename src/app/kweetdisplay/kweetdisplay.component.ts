@@ -18,12 +18,14 @@ export class KweetdisplayComponent implements OnInit {
   text = '';
   private kweet: KweetModel;
   timeout: any;
+  username: string;
 
   constructor(private kweetService: KweetService, private followService: FollowService) {}
 
   ngOnInit() {
     if (!this.profileView) {
       this.followService.getAllFollowings().subscribe(followers => this.followers = followers);
+      this.username = localStorage.getItem('username');
     }
   this.refresh();
   }
@@ -67,4 +69,7 @@ export class KweetdisplayComponent implements OnInit {
       }}, 100);
   }
 
+  likeKweet(id: number) {
+    alert(id + 'has been clicked!');
+  }
 }

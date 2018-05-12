@@ -16,6 +16,7 @@ import { AuthGuard } from './services/Guard.service';
 import { TimelineComponent } from './timeline/timeline.component';
 import { AllkweetsComponent } from './allkweets/allkweets.component';
 import {FollowService} from './services/follow.service';
+import {HeartService} from './services/heart.service';
 
 
 export function RestangularConfigFactory(RestangularProvider) {
@@ -46,7 +47,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AccountService, KweetService, AuthGuard, FollowService],
+  providers: [AccountService, KweetService, AuthGuard, FollowService, HeartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

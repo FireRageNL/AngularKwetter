@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Restangular} from 'ngx-restangular';
 
 @Injectable()
-export class FollowService{
+export class FollowService {
 
   constructor(private restAngular: Restangular) {
   }

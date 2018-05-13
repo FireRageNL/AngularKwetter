@@ -1,4 +1,7 @@
 <div class="container">
+  <div *ngIf="profileView">
+    Show kweets from followers <input type="checkbox" [checked]="followerView" (change)="changeView()" />
+  </div>
   <div class="kweets">
     <div *ngFor="let kweet of kweets">
       <div class="messageContents">

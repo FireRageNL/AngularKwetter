@@ -62,7 +62,7 @@ export class KweetdisplayComponent implements OnInit {
 
   refresh() {
     this.timeout = setTimeout(() => {
-      if (this.profileView) {
+      if (this.profileView && !this.followerView) {
         this.kweetService.getKweetsFromUser(localStorage.getItem('username')).subscribe(kweets => {this.kweets = kweets; });
       } else if (this.followerView) {
         this.followService.getAllFollowings().subscribe(followers => this.followers = followers);
@@ -89,5 +89,10 @@ export class KweetdisplayComponent implements OnInit {
       console.log('Message posted: ' + ev.data);
       this.refresh();
     };
+  }
+
+  changeView() {
+    this.followerView = !this.followerView;
+    this.refresh();
   }
 }

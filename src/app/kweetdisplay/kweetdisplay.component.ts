@@ -19,13 +19,17 @@ export class KweetdisplayComponent implements OnInit {
   private kweet: KweetModel;
   timeout: any;
   username: string;
+  websocket: WebSocket;
 
-  constructor(private kweetService: KweetService, private followService: FollowService) {}
+  constructor(private kweetService: KweetService, private followService: FollowService) {
+  }
 
   ngOnInit() {
+    this.username = localStorage.getItem('username');
+    this.websocket = new WebSocket('ws://localhost:8080/Kwetter/socket/' + this.username);
+    this.SetWebsocket();
     if (!this.profileView) {
       this.followService.getAllFollowings().subscribe(followers => this.followers = followers);
-      this.username = localStorage.getItem('username');
     }
   this.refresh();
   }
@@ -33,7 +37,7 @@ export class KweetdisplayComponent implements OnInit {
   sendKweet() {
     this.kweet = new KweetModel(localStorage.getItem('username'), this.text);
     this.kweetService.postKweet(this.kweet);
-    this.refresh();
+    this.websocket.send(this.kweet.kweetContents);
     this.text = '';
   }
 
@@ -71,5 +75,19 @@ export class KweetdisplayComponent implements OnInit {
 
   likeKweet(id: number) {
     alert(id + 'has been clicked!');
+  }
+
+  private SetWebsocket() {
+    this.websocket.onopen = (ev) => {
+      console.log('Ze socket has been opened');
+    };
+    this.websocket.onerror = (ev) => {
+      alert(ev);
+    }
+
+    this.websocket.onmessage = (ev) => {
+      console.log('Message posted: ' + ev.data);
+      this.refresh();
+    };
   }
 }

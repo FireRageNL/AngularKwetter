@@ -25,8 +25,7 @@ export function RestangularConfigFactory(RestangularProvider) {
 const appRoutes: Routes = [
   {path: 'register', component: RegistrationComponent},
   {path: '', component: LoginComponent},
-  {path: 'home', component: TimelineComponent, canActivate: [AuthGuard]},
-  {path: 'profile', component: UserprofileComponent, canActivate: [AuthGuard]},
+  {path: 'home', component: UserprofileComponent, canActivate: [AuthGuard]},
   {path: 'allkweets', component: AllkweetsComponent, canActivate: [AuthGuard] }
 ]
 

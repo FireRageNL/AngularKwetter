@@ -73,10 +73,6 @@ export class KweetdisplayComponent implements OnInit {
       }}, 100);
   }
 
-  likeKweet(id: number) {
-    alert(id + 'has been clicked!');
-  }
-
   private SetWebsocket() {
     this.websocket.onopen = (ev) => {
       console.log('Ze socket has been opened');

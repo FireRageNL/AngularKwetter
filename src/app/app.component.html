@@ -1,3 +1,3 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="navbar" *ngIf="navbar != undefined"> <div id="leftPane"><a [routerLink] = "['/home']"> Timeline</a> <a [routerLink] = "['/allkweets']"> All kweets </a> <button class="btn" (click)="logoutClick()">logout</button></div> <div id="profile"><a class="profileLink"[routerLink] = "['/profile']">{{navbar.username}}<i class="material-icons">person</i></a></div></div>
+<div class="navbar" *ngIf="navbar != undefined"> <div id="leftPane"><a [routerLink] = "['/allkweets']"> All kweets </a> <button class="btn" (click)="logoutClick()">logout</button></div> <div id="profile"><a class="profileLink"[routerLink] = "['/home']">{{navbar.username}}<i class="material-icons">person</i></a></div></div>
 <router-outlet></router-outlet>
